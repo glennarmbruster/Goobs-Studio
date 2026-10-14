@@ -1,0 +1,10 @@
+import {T,box,cylinder,line,tree} from './engine.js';
+export function golfScenery(s,course,hole){const z=-course.length;
+// Clubhouse verandah and coastal boardwalk sit outside the playable fairway.
+box(s,-35,2,12,13,4,9,0xe7dfc4);box(s,-35,4.15,12,15,.3,11,0x365755);for(let x=-40;x<=-30;x+=2.5){box(s,x,2,16.55,1.6,2.3,.04,0x426b70,.2);cylinder(s,x,1.6,19,.09,.09,3.2,0xe3d5b4)}box(s,-35,3.25,18,15,.2,5,0xd8c49f);box(s,-35,.25,18,15,.5,5,0x82755c);for(let n=0;n<34;n++){const zz=15-n*6;box(s,-23+Math.sin(n*.3)*2,.09,zz,2.5,.15,5.7,0xb8ac8b);if(n%2===0){for(let dx of [-1.6,1.6])cylinder(s,-23+Math.sin(n*.3)*2+dx,.8,zz,.065,.07,1.5,0x8e8065)}}
+for(let n=0;n<3;n++){const boat=new T.Group();const hull=new T.Mesh(new T.SphereGeometry(1,16,8),new T.MeshStandardMaterial({color:n%2?0x345d6b:0xe5ded0,roughness:.55}));hull.scale.set(1.3,.5,4);boat.add(hull);cylinder(boat,0,4,0,.055,.065,8,0xd1d2c6);const shape=new T.Shape();shape.moveTo(.15,1);shape.lineTo(.15,7.7);shape.lineTo(3.7,1);shape.closePath();const sail=new T.Mesh(new T.ShapeGeometry(shape),new T.MeshStandardMaterial({color:0xf1e9cf,side:T.DoubleSide,roughness:.9}));sail.rotation.y=Math.PI/2;boat.add(sail);boat.position.set(78+n*25,-.6,-55-n*65-hole*8);boat.rotation.y=.2+n*.6;s.add(boat)}
+for(let n=0;n<9;n++)tree(s,-35-(n%3)*7,z+35-n*9,.65+(n%3)*.2);
+// Small instanced flowering coastal plants add texture without hundreds of draw calls.
+const blooms=new T.InstancedMesh(new T.IcosahedronGeometry(.12,0),new T.MeshStandardMaterial({color:0xd6bf8e,roughness:1}),320),stem=new T.Object3D();for(let i=0;i<320;i++){const side=i%2?-1:1,zz=-((i*17.71)%course.length),xx=side*(19+(i*1.618)%12);stem.position.set(xx,.18+(i%4)*.08,zz);stem.scale.set(1+i%3*.3,.75,1);stem.updateMatrix();blooms.setMatrixAt(i,stem.matrix);blooms.setColorAt(i,new T.Color([0xddd2a6,0x918cb6,0xbcba88,0xdcc68b][i%4]))}blooms.userData.dynamic=true;s.add(blooms);
+for(let side of [-1,1]){box(s,side*3,.25,5,.5,.5,.5,hole===1?0xe0c7a1:0x326c78);line(s,[[side*2,.02,3],[side*2,.02,8]],0xe5dfbc)}
+}
