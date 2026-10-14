@@ -1,4 +1,0 @@
-export function newBaseballGame(innings=3){return {half:'pitch',inning:1,innings:[3,6,9].includes(+innings)?+innings:3,outs:0,strikes:0,balls:0,runs:0,cpu:0,bases:[false,false,false],pitches:0,line:[],complete:false}}
-export function recordRuns(state,runs){const key=state.half==='bat'?'runs':'cpu';state[key]+=runs;state.line??=[];const row=state.line[state.inning-1]??={home:0,away:0};row[state.half==='bat'?'home':'away']+=runs;return state}
-export function walkOff(state){return state.half==='bat'&&state.inning>=state.innings&&state.runs>state.cpu}
-export function nextHalf(state){const s={...state,bases:[false,false,false],outs:0,strikes:0,balls:0};if(state.half==='pitch'){if(state.inning>=state.innings&&state.runs>state.cpu)s.complete=true;else s.half='bat'}else if(state.inning>=state.innings&&state.runs!==state.cpu)s.complete=true;else{s.inning++;s.half='pitch'}return s}
