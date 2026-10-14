@@ -24,3 +24,9 @@
 
 .drive-controls .control-note{display:none}.drive-controls>.control-panel:last-child{flex:1;max-width:820px;justify-content:flex-end}.drive-controls>.control-panel:first-child{flex-shrink:0}
 @media(max-width:600px){.drive-controls{flex-wrap:wrap}.drive-controls>.control-panel:first-child{padding:6px}.drive-controls>.control-panel:last-child{gap:5px}.drive-controls button{font-size:11px;padding:8px 9px}.drive-controls .pedal{height:60px}}
+/* Rain is visible at game speed; overlays never intercept steering or taps. */
+.weather-screen{position:absolute;inset:0;pointer-events:none;z-index:1}
+.weather-rain{background-image:repeating-linear-gradient(108deg,transparent 0,transparent 47px,#c5dfe536 48px,transparent 50px),linear-gradient(#18334524,#18334505);background-size:170px 210px,100% 100%;animation:coast-rain .55s linear infinite;box-shadow:inset 0 0 150px #172f4650}
+.weather-fog{background:linear-gradient(#c2d1d525,transparent 60%,#b0c5c515)}
+@keyframes coast-rain{to{background-position:-70px 210px,0 0}}
+@media(prefers-reduced-motion:reduce){.weather-rain{animation:none}}

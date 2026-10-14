@@ -1,3 +1,4 @@
+import {ROUTE_LENGTH} from './drive-route.js';
 import {clamp} from './core.js';
 export const driveModes=['tour','escape','pursuit'];
 export const driveModeName={tour:'Coastal tour',escape:'Outrun the police',pursuit:'Police pursuit'};
@@ -23,12 +24,12 @@ export function stepChase(input,dt,player,mode,traffic=[],grip=1){
    c.pressure=clamp(c.pressure+(near?h:-h*1.7),0,6);
    c.clear=player.distance-c.d>120&&player.distance>350?c.clear+h:0;
    if(c.pressure>=6)c.outcome='caught';else if(c.clear>=5)c.outcome='escaped';
-   else if(player.distance>=2400)c.outcome=player.distance-c.d>70?'escaped':'caught';
+   else if(player.distance>=ROUTE_LENGTH)c.outcome=player.distance-c.d>70?'escaped':'caught';
   }else{
    c.pressure=clamp(c.pressure+(near&&player.speed>5?h:-h*2),0,4);
-   if(c.pressure>=4)c.outcome='intercepted';else if(c.d>=2400||c.d-player.distance>450)c.outcome='lost';
+   if(c.pressure>=4)c.outcome='intercepted';else if(c.d>=ROUTE_LENGTH||c.d-player.distance>450)c.outcome='lost';
   }
-  if(c.elapsed>=150&&!c.outcome)c.outcome=mode==='escape'?'caught':'lost';
+  if(c.elapsed>=300&&!c.outcome)c.outcome=mode==='escape'?'caught':'lost';
   if(c.outcome)break;
  }return c;
 }
