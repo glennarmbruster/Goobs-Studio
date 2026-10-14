@@ -8,5 +8,5 @@ export const golfCourses=[
 ];
 export function fairwayAt(z,course){const scale=course.length/169,i=-z/(4.5*scale),t=Math.max(0,-z/course.length),bend=course.bend??10;return {center:Math.sin(i*.12)*bend+(course.bend===undefined?0:course.x*t*t*.7),width:(course.width??12)+Math.sin(i*.2)*3}}
 export const freshGolf=()=>({x:0,z:4,strokes:0,done:false,hole:0,card:[]});
-export function advanceGolf(state){const next=(state.hole??0)+1;return {...freshGolf(),hole:next<golfCourses.length?next:0,card:next<golfCourses.length?[...(state.card??[]),state.strokes]:[]}}
+export function advanceGolf(state){const next=(state.hole??0)+1;return {...freshGolf(),...(state.weather?{weather:state.weather}:{}),hole:next<golfCourses.length?next:0,card:next<golfCourses.length?[...(state.card??[]),state.strokes]:[]}}
 export const roundRelative=card=>card.reduce((sum,n,i)=>sum+n-golfCourses[i].par,0);

@@ -5,7 +5,7 @@ export const driveSaveKey=mode=>mode==='tour'?'drive':'drive:'+mode;
 export const freshDrive=()=>({distance:0,offset:2.65,time:0,speed:0});
 export const freshChase=mode=>({d:mode==='escape'?-65:85,offset:2.65,speed:0,elapsed:0,pressure:0,clear:0,outcome:null});
 // The rival drives the same route with bounded acceleration. No position teleporting.
-export function stepChase(input,dt,player,mode,traffic=[]){
+export function stepChase(input,dt,player,mode,traffic=[],grip=1){
  const c={...input};if(c.outcome||mode==='tour')return c;
  const n=Math.max(1,Math.ceil(dt*120)),h=dt/n;
  for(let i=0;i<n;i++){
@@ -16,8 +16,8 @@ export function stepChase(input,dt,player,mode,traffic=[]){
   const clear= !traffic.some(v=>v.direction<0&&v.d>c.d-30&&v.d<c.d+230);
   if(leader){if(clear&&leader.d-c.d<75){lane=-2.65;c.passId=leader.id;}else target=Math.min(target,Math.max(0,leader.speed+(leader.d-c.d-18)*.7))}
   if(!leader)c.passId=null;if(mode==='escape'&&gap<40)lane=clamp(player.offset,-3.5,3.5);
-  c.offset+=(lane-c.offset)*(1-Math.exp(-h*1.6));
-  c.speed=clamp(c.speed+clamp((target-c.speed)*1.8,-24,mode==='escape'?10:7.5)*h,0,84);c.d+=c.speed*h;
+  target*=.82+.18*grip;c.offset+=(lane-c.offset)*(1-Math.exp(-h*1.6));
+  c.speed=clamp(c.speed+clamp((target-c.speed)*1.8,-24*grip,mode==='escape'?10:7.5)*h,0,84);c.d+=c.speed*h;
   const separation=Math.abs(player.distance-c.d),near=separation<20&&Math.abs(player.offset-c.offset)<2.2;
   if(mode==='escape'){
    c.pressure=clamp(c.pressure+(near?h:-h*1.7),0,6);
