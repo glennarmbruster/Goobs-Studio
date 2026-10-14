@@ -15,4 +15,31 @@ export function stadiumFence(scene,park){const positions=[],indices=[],segments=
  }
  return wall;
 }
-export function fieldFloodlights(scene,climate){const lights=[];for(const side of [-1,1])for(const z of [5,-83]){const light=new T.SpotLight(0xfff1d7,climate.time==='night'?1450:climate.mode==='rain'?900:150,230,.85,.65,1);light.name='stadium-field-floodlight';light.position.set(side*78,41,z);const target=new T.Object3D();target.position.set(side*16,0,z===5?-17:-65);scene.add(target);light.target=target;scene.add(light);lights.push(light)}return lights}
+// Keep the pre-v10 field illumination. Bright fixtures should not wash out the grass.
+export function fieldFloodlights(scene,climate,park){
+ const night=climate.time==='night',lights=[];
+ for(const side of [-1,1])for(const z of [5,-83]){
+  const light=new T.PointLight(0xfff1d7,night?80:climate.mode==='rain'?45:8,130,1.5);
+  light.name='stadium-field-floodlight';light.position.set(side*65,32,z);scene.add(light);lights.push(light);
+ }
+ // Two banks sit beyond the outfield stands, either side of the scoreboard.
+ // Their size/position keeps both banks in the batting view in portrait and landscape.
+ const canvas=document.createElement('canvas');canvas.width=512;canvas.height=224;
+ const ctx=canvas.getContext('2d');ctx.fillStyle='#253442';ctx.fillRect(0,0,512,224);
+ for(let row=0;row<3;row++)for(let col=0;col<6;col++){
+  const x=col*82+16,y=row*69+14;ctx.fillStyle='#61717a';ctx.fillRect(x-3,y-3,73,61);
+  ctx.fillStyle=night?'#ffdf9d':'#bec9cb';ctx.fillRect(x,y,67,55);
+  ctx.fillStyle=night?'#fff9e7':'#e4e8e3';ctx.fillRect(x+7,y+5,53,43);
+ }
+ const texture=new T.CanvasTexture(canvas);texture.colorSpace=T.SRGBColorSpace;
+ for(const side of [-1,1])for(const outfield of [false,true]){
+  const x=side*(outfield?30:78),z=outfield?-park.radius-30:5,y=outfield?32:42;
+  cylinder(scene,x,y/2,z,.36,.65,y,0x566674);
+  const frame=box(scene,x,y,z,14.7,6.8,.8,0x344754);frame.rotation.x=-.12;
+  const bank=new T.Mesh(new T.PlaneGeometry(14,6),new T.MeshBasicMaterial({map:texture,toneMapped:false}));
+  bank.name=outfield?'outfield-light-bank':'sideline-light-bank';bank.userData.dynamic=true;
+  bank.position.set(x,y,z+.5);bank.rotation.x=-.12;scene.add(bank);
+  for(const offset of [-4.8,4.8])line(scene,[[x,y-8,z],[x+offset,y-3,z]],0x71818d);
+ }
+ return lights;
+}

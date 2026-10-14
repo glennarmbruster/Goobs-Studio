@@ -30,3 +30,6 @@
 .weather-fog{background:linear-gradient(#c2d1d525,transparent 60%,#b0c5c515)}
 @keyframes coast-rain{to{background-position:-70px 210px,0 0}}
 @media(prefers-reduced-motion:reduce){.weather-rain{animation:none}}
+
+/* The blue power cue is separate from the green accuracy zone. */
+.golf-controls{flex-direction:column;align-items:stretch;gap:6px}.golf-controls .control-note{max-width:none;text-align:center}.golf-controls .control-panel{justify-content:center;gap:8px}.golf-controls button{padding:10px 13px;font-size:12px}.golf-controls .control-panel input[type=range]{width:100px}.golf-swing-meter{flex:1 1 240px;max-width:360px;min-width:220px}.golf-swing-meter .meter{width:100%;margin-top:7px;overflow:visible}.golf-swing-meter #fill{border-radius:20px}.golf-swing-meter #power-target{position:absolute;top:-4px;bottom:-4px;width:3px;transform:translateX(-50%);background:#6cc9ff;box-shadow:0 0 7px #53baff;z-index:3;pointer-events:none}.golf-guide-label{font-size:11px;color:#9bd9ff;line-height:1.5;margin-top:7px;min-height:17px;letter-spacing:0}.golf-controls #power-guide[aria-pressed=true]{border-color:#6cc9ff;color:#a8dfff}@media(max-height:600px) and (orientation:landscape){.golf-controls .control-note{display:none}.golf-controls .control-panel{padding:8px}.golf-controls{bottom:10px}}
