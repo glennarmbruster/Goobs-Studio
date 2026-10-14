@@ -1,0 +1,17 @@
+{
+  "tool": "Built-in image generation",
+  "assets": [
+    {
+      "name": "resort-lounge",
+      "prompt": "Photorealistic cinematic game location for an abandoned elegant coastal resort escape-room. Wide landscape 3:2, eye-level broad room view, coherent navigable room, no people. Warm walnut reading lounge with teal upholstery and antique brass fittings at blue hour, matching a quiet tropical reception. Left side: tall bookshelves and a framed handwritten coastal route log on a small reading desk, middle left. Center foreground: low wooden table with a closed brass-cornered leather travel case with a small combination lock. Right side: a vintage communications desk with a visibly unplugged antenna cable socket and radio aerial apparatus; framed nautical lighthouse chart above it. Tall windows in background reveal palms and sea dusk; lamps lit amber; open doorway at far left returns to reception. Believable detailed furniture, premium realistic materials, relaxed eerie atmosphere, sharp photographic quality. NO readable text, NO numbers, NO interface, NO highlighted hotspots, NO cartoon.",
+      "path": "dist/assets/resort-lounge.webp",
+      "transparent_background": false
+    },
+    {
+      "name": "harbor-workshop",
+      "prompt": "Photorealistic cinematic escape-room game location. Wide landscape 3:2 eye-level full view of an old tropical harbor engine workshop connected to a wooden boathouse, blue hour outside, warm lanterns indoors, worn cedar beams, brass hardware, teal ocean reflections. Left: large workbench with an open marine engine service manual and three neatly arranged fuel hose valves, brass pressure gauge visible. Center: wooden tool cabinet with a three-digit mechanical padlock. Center-right: compact fuel transfer pump bolted to a bench, coiled hose hanging beside it. Right foreground: dented metal fuel can and a spare rubber impeller seal in a shallow tray. Background double doorway reveals a launch jetty and lantern light over water. Deliberate clear spaced objects suitable for interactive hotspots. Premium grounded realistic photography, detailed mechanical surfaces, no people, no readable words or digits, no interface, no arrows, no cartoon.",
+      "path": "dist/assets/harbor-workshop.webp",
+      "transparent_background": false
+    }
+  ]
+}
