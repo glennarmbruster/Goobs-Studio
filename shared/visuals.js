@@ -4,7 +4,7 @@ import {GLTFLoader} from './vendor/loaders/GLTFLoader.js';
 import {DRACOLoader} from './vendor/loaders/DRACOLoader.js';
 const asset=name=>new URL('../assets/'+name,import.meta.url).href;
 // All visual resources belong to one mounted game, including late async arrivals.
-export function visualKit(e,{coast=false,climate=null}={}){
+export function visualKit(e,{coast=false,climate=null,lighting=false}={}){
  let alive=true,environment=null;const textures=[];
  function texture(name,repeat=1){const tex=new T.TextureLoader().load(asset(name));tex.colorSpace=T.SRGBColorSpace;tex.wrapS=tex.wrapT=T.RepeatWrapping;tex.repeat.set(repeat,repeat);tex.anisotropy=4;textures.push(tex);return tex}
  const turf=texture('turf.webp'),rock=texture('rock.webp'),sand=texture('sand.webp');
@@ -20,8 +20,9 @@ export function visualKit(e,{coast=false,climate=null}={}){
   e.scene.background?.dispose?.();e.scene.background=new T.Color(0x94bccb);e.scene.fog.color.setHex(0x9bbbc1);e.scene.fog.near=200;e.scene.fog.far=480;
   e.sun.intensity=2.1;e.sun.color.setHex(0xffe2b8);e.renderer.toneMappingExposure=.86;
   for(const o of e.scene.children)if(o.isHemisphereLight)o.intensity=1.3;
-  new RGBELoader().load(asset('coastal-light.hdr'),tex=>{if(!alive){tex.dispose();return}tex.mapping=T.EquirectangularReflectionMapping;environment=tex;e.scene.environment=tex;e.scene.environmentIntensity=climate?.time==='night'?.06:climate?.mode==='rain'?.15:climate?.mode==='fog'?.12:.65},undefined,()=>{});
+
  }
+ if(coast||lighting)new RGBELoader().load(asset('coastal-light.hdr'),tex=>{if(!alive){tex.dispose();return}tex.mapping=T.EquirectangularReflectionMapping;environment=tex;e.scene.environment=tex;if(coast)e.scene.environmentIntensity=climate?.time==='night'?.06:climate?.mode==='rain'?.15:climate?.mode==='fog'?.12:.65},undefined,()=>{});
  function surface(mesh,kind='turf',meters=4,tint){const mat=materials[kind].clone();if(tint!==undefined)mat.color.setHex(tint);mesh.material.dispose();mesh.material=mat;worldUV(mesh.geometry,meters);mesh.receiveShadow=true;return mesh}
  function boulder(parent,x,y,z,sx,sy,sz,seed=0){const geo=new T.IcosahedronGeometry(1,2),p=geo.attributes.position;for(let i=0;i<p.count;i++){const a=p.getX(i),b=p.getY(i),c=p.getZ(i),n=1+.13*Math.sin(a*7+b*4+seed)*Math.cos(c*8-seed);p.setXYZ(i,a*n,b*n,c*n)}geo.computeVertexNormals();worldUV(geo,.8);const m=new T.Mesh(geo,materials.rock);m.position.set(x,y,z);m.scale.set(sx,sy,sz);m.rotation.y=seed;m.castShadow=true;m.receiveShadow=true;parent.add(m);return m}
  return {texture,surface,boulder,materials,dispose(){alive=false;environment?.dispose();for(const t of textures)t.dispose();for(const m of Object.values(materials))m.dispose()}};

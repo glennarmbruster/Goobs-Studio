@@ -1,0 +1,21 @@
+Goobs Studio v0.12 — five new 0.5 Alpha games
+
+CHANGES ONLY: apply over your existing uploaded v0.11 site.
+
+Upload the contents of this ZIP to the repository root, replacing matching files.
+Keep every existing file not included here. Do not delete the old site.
+The index, assets/, games/ and shared/ paths belong directly at the root.
+
+Added: Deepwater, Grand Orbital, Harbor Architect, Outpost Command, Marble Odyssey.
+The Studio launcher is v0.12; each new game is marked 0.5 Alpha.
+Use the New · 0.5 category to find the new games.
+
+After GitHub Pages finishes deploying, open the site online. Use
+New build ready · Reload if shown, and confirm v0.12 on the launcher.
+Wait for Ready offline · all 10 games before disconnecting.
+There is no need to clear website data; doing so would erase local saves.
+
+79 automated rule/asset tests passed, plus launcher checks, original-game smoke
+checks and new-game touch callbacks in portrait/landscape using mocked rendering.
+Actual iPad Safari graphics, layout, tilt sensors, audio and performance need
+device testing. These are playable alpha builds, not native iOS applications.

@@ -1,0 +1,31 @@
+{
+  "generator": "Built-in image_gen",
+  "purpose": "Illustrative launcher covers, not gameplay screenshots",
+  "assets": [
+    {
+      "id": "deepwater",
+      "prompt": "An exquisitely detailed realistic cinematic game cover for DEEPWATER submarine exploration. No text. A small ivory and burnt-orange research submarine with glass observation dome, twin intense searchlight beams, and precise mechanical thrusters exploring a vast teal abyss beside an ancient rusted shipwreck, coral, schools of fish and distant mysterious stone arches. Volumetric underwater light, turquoise to midnight-blue depth, photographic materials, elegant premium game key art, adventurous rather than horror, strong clear central silhouette. Landscape 1536x1024 composition readable cropped square as launcher icon. No UI, no border, no logos.",
+      "dest": "dist/assets/cover-deepwater.webp"
+    },
+    {
+      "id": "orbital",
+      "prompt": "An exquisitely detailed realistic cinematic game cover for GRAND ORBITAL, a deluxe original space pinball game. No text. Close dramatic elevated view of a beautifully crafted real physical pinball table, polished chrome ball in foreground, illuminated turquoise and amber orbital rings, brass rails, translucent multilevel ramps, precision flippers, miniature planets and a central orbital space station. Dark navy lacquer, rich emissive jewel lighting, physically convincing materials, premium product photography mixed with cinematic key art. Landscape 1536x1024, strong central composition readable cropped square as launcher icon. No UI, no logos, no text, no border.",
+      "dest": "dist/assets/cover-orbital.webp"
+    },
+    {
+      "id": "harbor",
+      "prompt": "An exquisitely detailed realistic cinematic game cover for HARBOR ARCHITECT waterfront city builder. No text. Elevated oblique view of a lovely working Mediterranean coastal harbor settlement at golden hour: ivory stucco waterfront buildings with terracotta roofs, a small ferry docking, fishing boats, tidy quays, a graceful pedestrian bridge, waterfront restaurants, cypress trees, layered azure sea. Architectural visualization with warm window glow, textured stone and realistic water. Sophisticated colorful inviting premium game art, not cartoon. Landscape 1536x1024 strong central harbor composition readable cropped square. No UI, labels, logos or border.",
+      "dest": "dist/assets/cover-harbor.webp"
+    },
+    {
+      "id": "outpost",
+      "prompt": "An exquisitely detailed realistic cinematic game cover for OUTPOST COMMAND tactical island conquest. No text. Elevated tactical view across lush rugged coastal islands linked by causeways, with compact fortified military outposts, radio towers, supply trucks, a few armored vehicles, coastal artillery and small coordinated infantry formations. Subtle cyan lights mark the friendly command base in foreground, distant amber opposing outpost. Sunset cloud shafts, realistic vegetation and stone, rich ocean blues, carefully readable composition, polished strategy game key art, no gore. Landscape 1536x1024, readable cropped square. No UI, map arrows, text, logos or border.",
+      "dest": "dist/assets/cover-outpost.webp"
+    },
+    {
+      "id": "marble",
+      "prompt": "An exquisitely detailed realistic cinematic game cover for MARBLE ODYSSEY physics adventure. No text. A beautiful translucent blue glass marble with inner amber swirl resting on a polished walnut and brass mechanical track suspended within a vast sunlit clockwork conservatory. Curving rails, intricate gears, bridges, a water channel, magnetic blue arcs, lush ferns and luminous distant glass roof. Highly realistic glass reflections and rich textured materials, elegant colorful premium game key art, sense of precision and wonder. Landscape 1536x1024 central marble prominent and readable cropped square. No UI, text, logos or border.",
+      "dest": "dist/assets/cover-marble.webp"
+    }
+  ]
+}
