@@ -40,3 +40,14 @@
 @media(max-height:600px) and (orientation:landscape){.expedition-stage .stat{top:80px;font-size:10px;line-height:1.4}.expedition-controls{bottom:8px}.flight-stick{width:92px;height:92px}.expedition-controls .control-panel{padding:6px}.deep-map{top:90px;width:75px}.deep-map svg{height:120px}}
 
 .cards:not(.filtered) .game-card:nth-last-child(-n+2){grid-column:span 3}.cards.filtered .game-card:nth-child(10){grid-column:span 2}@media(max-width:850px){.cards:not(.filtered) .game-card:nth-last-child(-n+2),.cards.filtered .game-card:nth-child(10){grid-column:span 1}}
+/* v0.13: keep the rebuilt machine prominent; secondary information lives by the controls. */
+.orbital-stage .stat{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.orbital-stage .hud-title{background:linear-gradient(110deg,#142331ed,#071019e0);border-color:#c8ad7350}
+.orbital-stage .pin-controls{display:grid;grid-template-columns:1fr auto auto 1fr;max-width:850px;gap:8px;padding:9px 12px;background:linear-gradient(#172e3aeb,#071420f2);border-color:#b69e6850;box-shadow:0 10px 35px #0008}
+.pin-readout{grid-column:1/-1;text-align:center;letter-spacing:.13em;font-size:10px;color:#b8c7c6;min-height:13px}
+.orbital-stage .pin-controls .big-action{min-height:55px;border-radius:10px;background:linear-gradient(#314d59,#192f3b);border-color:#bbbd9f55;box-shadow:inset 0 1px #d1e0d225,0 3px 6px #0005}
+.orbital-stage .pin-controls .big-action:active{background:#396875;box-shadow:inset 0 3px 8px #071922}
+.orbital-stage .pin-controls #launch{background:linear-gradient(#d1b075,#ac8950);color:#142c32}
+.orbital-stage .pin-controls #nudge{order:0}
+@media(max-width:540px){.orbital-stage .pin-controls{gap:5px;padding:7px}.orbital-stage .pin-controls .big-action{min-width:0;font-size:10px;padding:9px}.orbital-stage .pin-controls #nudge{padding:8px}.pin-readout{font-size:8px;letter-spacing:.06em}}
+@media(max-height:600px) and (orientation:landscape){.orbital-stage .pin-controls .big-action{min-height:42px}.orbital-stage .pin-controls{padding:6px}.pin-readout{font-size:8px}}

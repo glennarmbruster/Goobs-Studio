@@ -3,7 +3,8 @@ import {shell,load,save,modal,toast,lifecycle,bindHold,clamp,tone} from './core.
 import {visualKit} from './visuals.js';
 export {T,box,cylinder,sphere,line,label,water,tree,batchStatic,load,save,modal,toast,bindHold,clamp,tone};
 export function stage(title,subtitle,{sky=0x80bdcb,fog=220,coast=false}={}){
- shell(title,'0.5 ALPHA · '+subtitle);const e=engine({sky,fog}),s=e.scene,v=visualKit(e,{coast,lighting:true});
+ shell(title,'0.6 ALPHA · '+subtitle);const e=engine({sky,fog}),s=e.scene,v=visualKit(e,{coast,lighting:true});
+ Object.assign(e.sun.shadow.camera,{left:-55,right:55,top:55,bottom:-55});e.sun.shadow.camera.updateProjectionMatrix();e.sun.shadow.normalBias=.025;
  document.querySelector('.stage').classList.add('expedition-stage');document.querySelector('#controls').classList.add('expedition-controls');
  e.camera.position.set(0,70,65);e.camera.lookAt(0,0,0);e.renderer.toneMappingExposure=1.05;
  return {e,s,v};

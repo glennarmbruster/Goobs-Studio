@@ -1,0 +1,10 @@
+{
+  "generator": "Built-in image_gen",
+  "assets": [
+    {
+      "file": "assets/orbital-playfield-v13.webp",
+      "purpose": "Printed artwork on the playable 3D pinball table",
+      "prompt": "Use case: illustration-story. Asset type: flat printed playfield artwork texture for a premium physical space pinball machine called GRAND ORBITAL, portrait 1:2 aspect ratio. Full bleed, perfectly orthographic flat 2D print design, no perspective, no photographed machine, NO physical hardware, NO flippers, NO bumpers, NO ball, NO cabinet, NO rails. Rich illustrated retrofuturist space exploration lithograph: deep midnight blue and indigo cosmic background, a gorgeous warm ochre ringed planet at upper right, a small detailed orbital space station upper left, elegant sweeping turquoise and copper orbital arcs framing the sides, tiny stars, etched engineering diagrams and navigation markings. Lower middle has beautifully lettered readable uppercase title GRAND ORBITAL in cream art deco lettering on two lines, with a smaller subtitle ORBITAL RELAY. Intricate high-end printed artwork, very fine gold linework, soft cosmic clouds, restrained aged ink texture, energetic but not cluttered. Upper third busy with fine planetary illustrations; central vertical corridor visually quieter dark blue; lower fifth has decorative geometric gold and turquoise sunburst arcs pointing up toward the middle, no imitation flippers. Entire image is the flat artwork itself edge-to-edge, no border outside the artwork, no lighting glare, no reflections, no shadows, no mockup. Beautiful production-quality pinball playfield graphic."
+    }
+  ]
+}

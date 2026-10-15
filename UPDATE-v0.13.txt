@@ -1,0 +1,54 @@
+GOOBS STUDIO v0.13 — VISUAL REBUILD / NEW GAMES 0.6 ALPHA
+Changes-only GitHub Pages update over v0.12
+
+INSTALL
+1. Extract this ZIP.
+2. Upload its contents to the root of glennarmbruster/Goobs-Studio.
+   Merge the assets, games and shared folders, replacing matching files.
+   Keep all other repository files. This patch needs the existing v0.12 site.
+3. Commit the upload and wait for GitHub Pages to deploy.
+4. Open the site online. Use “New build ready · Reload” when offered.
+   Confirm v0.13 on the launcher and wait for “Ready offline · all 10 games”.
+
+The existing index.html is unchanged and is not included. The launcher changes
+are in shared/app.js. Pages stays on main / root. No build command is required.
+Saves and unlocks carry forward. Do not clear Safari site data.
+
+WHAT CHANGED
+Grand Orbital: illustrated playfield, cabinet, backbox and live score display;
+chrome hardware, layered bumpers, animated lamps, tapered flippers and spring
+plunger; an open orbit ramp with transparent floor and wire rails. Reframed for
+portrait and landscape. Guide thickness, closed slingshot edges and tapered
+flipper contacts now correspond more closely to their visible geometry.
+
+Deepwater: detailed research sub, observation dome, hull bands, shrouded
+thrusters/rotors, grabber arms and landing skids. Rebuilt wreck and research
+dock, branching coral, kelp, fish and underwater light shafts. Local shadows
+follow the submarine through the environment.
+
+Harbor Architect: pitched roofs, shutters, gutters, framed windows, cafés with
+striped awnings and seating, gardens, fountains, detailed solar panels and piers.
+Added quayside scenery, marina equipment and modeled boats. Evening windows glow.
+
+Outpost Command: irregular rocky islands, concrete bunkers, sandbag defenses,
+communications equipment, detailed causeways and armored vehicles. Use
+“View: Tactical / Close” to inspect the selected base. Vehicle pieces are batched
+to reduce rendering overhead while retaining their detail.
+
+Marble Odyssey: wooden plank decks, brass inlays, braces, shaped walls, toothed
+gears with cutouts and a rebuilt portal. The conservatory now has glazing,
+architectural details, garden planters and waterfalls. Track geometry continues
+to follow the existing playable routes. Magnetic-pad lighting remains animated.
+
+CHECKS
+86 automated tests passed, plus live game callback/control/save checks for all
+five newer games in portrait and landscape and the ten-game launcher check.
+Geometry checks cover camera fit in six viewport sizes, full-town batching,
+collision silhouettes, animated objects and upward-facing terrain surfaces.
+The ZIP was verified as a patch over v0.12 with no unchanged game assets included.
+
+These checks use a mocked renderer. Actual Safari visuals, device touch layout,
+iPad M2 frame rate/thermal performance and motion controls still need device testing.
+
+The five newer games are development builds labeled 0.6 Alpha. The Studio bundle
+is v0.13. ART-v0.13.json records the original generated playfield artwork prompt.

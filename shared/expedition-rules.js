@@ -25,11 +25,12 @@ export function deepStep(s,dt,input={}){
  return s;
 }
 
-export const pinSegments=[[-9,-17,-9,12],[9,-17,9,18],[-9,-17,9,-17],[-9,12,-4.6,17],[7.4,-13,7.4,14],[7.4,14,4.6,17],[-7,-9,-4,-12],[4,-12,6.6,-8],[-8,8,-6,12],[6,12,7,8]];
+export const pinSlings=[[[-8,8],[-6,12],[-4.4,10.8]],[[7,8],[6,12],[4.4,10.8]]];
+export const pinSegments=[[-9,-17,-9,12],[9,-17,9,18],[-9,-17,9,-17],[-9,12,-4.6,17],[7.4,-13,7.4,14],[7.4,14,4.6,17],[-7,-9,-4,-12],[4,-12,6.6,-8],...pinSlings.flatMap(points=>points.map((p,i)=>[...p,...points[(i+1)%points.length]]))];
 export const pinBumpers=[[-3,-7,1.35],[2.7,-8.5,1.35],[0,-3.8,1.2]];
 export const freshPin=()=>({balls:[],remaining:3,score:0,combo:1,targets:[false,false,false],locks:0,missions:0,charge:0,serve:true,done:false,time:0,save:0,cooldown:0,nudges:0,tilt:0,left:0,right:0,last:0});
 export function launchPin(s,power=.8){if(!s.serve||s.done)return s;return {...s,serve:false,balls:[{x:8.15,z:15,vx:-.3,vz:-27-power*15,hit:0,ramp:0}],save:10,charge:0}}
-function segmentHit(b,ax,az,bx,bz,r=.45,restitution=.82){
+function segmentHit(b,ax,az,bx,bz,r=.61,restitution=.82){
  const dx=bx-ax,dz=bz-az,t=clamp(((b.x-ax)*dx+(b.z-az)*dz)/(dx*dx+dz*dz||1),0,1),x=ax+t*dx,z=az+t*dz,nx=b.x-x,nz=b.z-z,d=Math.hypot(nx,nz);
  if(d>=r)return false;const ux=d>1e-6?nx/d:1,uz=d>1e-6?nz/d:0;b.x=x+ux*r;b.z=z+uz*r;const dot=b.vx*ux+b.vz*uz;if(dot<0){b.vx-=(1+restitution)*dot*ux;b.vz-=(1+restitution)*dot*uz}return true;
 }
@@ -53,7 +54,8 @@ export function pinStep(source,dt,input={}){
    if(b.x< -6.2&&b.z< -11&&b.vz< -4){b.ramp=.001;s.locks++;s.score+=750*s.combo;if(s.locks%2===0){add.push({x:3,z:-12,vx:-4,vz:3,hit:0,ramp:0});s.save=10}}
    for(const [side,sign]of [['left',-1],['right',1]]){
     const pivotX=sign*4.5,pivotZ=15.3,angle=.4-s[side]*.93,tipX=pivotX-sign*Math.cos(angle)*3.8,tipZ=pivotZ+Math.sin(angle)*3.8;
-    if(segmentHit(b,pivotX,pivotZ,tipX,tipZ,.72,.7)&&input[side]&&!s.tilt){b.vz=-22-10*s[side];b.vx=-sign*(4+Math.abs(b.x)*.65);s.last=s.time}
+    const f=clamp(((b.x-pivotX)*(tipX-pivotX)+(b.z-pivotZ)*(tipZ-pivotZ))/(3.8*3.8),0,1),radius=.45+.49*(1-f)+.32*f;
+    if(segmentHit(b,pivotX,pivotZ,tipX,tipZ,radius,.7)&&input[side]&&!s.tilt){b.vz=-22-10*s[side];b.vx=-sign*(4+Math.abs(b.x)*.65);s.last=s.time}
    }
    const speed=Math.hypot(b.vx,b.vz);if(speed>48){b.vx*=48/speed;b.vz*=48/speed}
   }
