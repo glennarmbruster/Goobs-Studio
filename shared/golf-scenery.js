@@ -6,5 +6,5 @@ for(let n=0;n<3;n++){const boat=new T.Group();const hull=new T.Mesh(new T.Sphere
 for(let n=0;n<9;n++)tree(s,-35-(n%3)*7,z+35-n*9,.65+(n%3)*.2);
 // Small instanced flowering coastal plants add texture without hundreds of draw calls.
 const blooms=new T.InstancedMesh(new T.IcosahedronGeometry(.12,0),new T.MeshStandardMaterial({color:0xd6bf8e,roughness:1}),320),stem=new T.Object3D();for(let i=0;i<320;i++){const side=i%2?-1:1,zz=-((i*17.71)%course.length),xx=side*(19+(i*1.618)%12);stem.position.set(xx,.18+(i%4)*.08,zz);stem.scale.set(1+i%3*.3,.75,1);stem.updateMatrix();blooms.setMatrixAt(i,stem.matrix);blooms.setColorAt(i,new T.Color([0xddd2a6,0x918cb6,0xbcba88,0xdcc68b][i%4]))}blooms.userData.dynamic=true;s.add(blooms);
-for(let side of [-1,1]){box(s,side*3,.25,5,.5,.5,.5,hole===1?0xe0c7a1:0x326c78);line(s,[[side*2,.02,3],[side*2,.02,8]],0xe5dfbc)}
+// Tee markers are placed by golf-world at the modeled ground height.
 }
