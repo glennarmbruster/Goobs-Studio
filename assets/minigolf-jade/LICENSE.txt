@@ -1,0 +1,7 @@
+Photographic surface textures from Poly Haven, CC0 1.0 public domain.
+https://polyhaven.com/license
+https://polyhaven.com/a/sandstone_cracks
+https://polyhaven.com/a/rock_boulder_cracked
+
+Local 1K JPEG Diffuse, OpenGL normal, and ARM maps.
+The game loads these bundled files locally and does not call the Poly Haven API.
